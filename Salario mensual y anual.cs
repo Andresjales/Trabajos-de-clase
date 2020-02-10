@@ -10,172 +10,66 @@ namespace ConsoleApp5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ingrese su salario: ");
+             Console.WriteLine("Ingrese su salario: ");
             double salario = int.Parse(Console.ReadLine());
             Console.WriteLine("Digite 1 si su contrato es dependiente o 2 si su contrato es independiente: ");
             int depInd = int.Parse(Console.ReadLine());
-            double smmlv = 877803;
-            double baseCot = (40 * salario) / 100;
+            double smmlv = 877803, prima = 0;
+            double arl = 0, eps = 0, pension = 0;
+            double baseCot = salario * 0.4;
+
+            if (baseCot < smmlv)
+            {
+                baseCot = smmlv;
+            }
 
             if (depInd == 1)
             {
-                if (baseCot < smmlv)
-                {
-                    double pension = (4 * smmlv) / 100;
-                    double eps = (4 * smmlv) / 100;
-                    double sReal = salario - pension - eps;
-                    double sAnualR = (sReal * 12) + salario;
-
-                    Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                }
-
-                else
-                {
-                    double pension = (4 * baseCot) / 100;
-                    double eps = (4 * baseCot) / 100;
-                    double sReal = salario - pension - eps;
-                    double sAnualR = (sReal * 12) + salario;
-
-                    Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                }
+                eps = 0.04 * baseCot;
+                pension = 0.04 * baseCot;
+                prima = salario;
             }
-
             else if (depInd == 2)
             {
-                Console.WriteLine("Ingrese un numero del 1 al 5 equivalente a la clase de riesgo laboral: ");
+                eps = 0.125 * baseCot;
+                pension = 0.16 * baseCot;
+                Console.WriteLine("Ingrese su tipo de riesgo (1-5): ");
                 int riesgo = int.Parse(Console.ReadLine());
-
-                if (baseCot < smmlv)
+                if (riesgo == 1)
                 {
-                    if (riesgo == 1)
-                    {
-                        double pension = (16 * smmlv) / 100;
-                        double eps = (12.5 * smmlv) / 100;
-                        double arl = (0.522 * smmlv) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 2)
-                    {
-                        double pension = (16 * smmlv) / 100;
-                        double eps = (12.5 * smmlv) / 100;
-                        double arl = (1.044 * smmlv) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 3)
-                    {
-                        double pension = (16 * smmlv) / 100;
-                        double eps = (12.5 * smmlv) / 100;
-                        double arl = (2.436 * smmlv) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 4)
-                    {
-                        double pension = (16 * smmlv) / 100;
-                        double eps = (12.5 * smmlv) / 100;
-                        double arl = (4.350 * smmlv) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 5)
-                    {
-                        double pension = (16 * smmlv) / 100;
-                        double eps = (12.5 * smmlv) / 100;
-                        double arl = (6.960 * smmlv) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("No eligio  ningun tipo de riesgo laboral.");
-                    }
+                    arl = 0.522 / 100;
                 }
-
+                else if (riesgo == 2)
+                {
+                    arl = 1.044 / 100;
+                }
+                else if (riesgo == 3)
+                {
+                    arl = 2.436 / 100;
+                }
+                else if (riesgo == 4)
+                {
+                    arl = 4.350 / 100;
+                }
+                else if (riesgo == 5)
+                {
+                    arl = 6.960 / 100;
+                }
                 else
                 {
-                    if (riesgo == 1)
-                    {
-                        double pension = (16 * baseCot) / 100;
-                        double eps = (12.5 * baseCot) / 100;
-                        double arl = (0.522 * baseCot) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 2)
-                    {
-                        double pension = (16 * baseCot) / 100;
-                        double eps = (12.5 * baseCot) / 100;
-                        double arl = (1.044 * baseCot) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 3)
-                    {
-                        double pension = (16 * baseCot) / 100;
-                        double eps = (12.5 * baseCot) / 100;
-                        double arl = (2.436 * baseCot) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 4)
-                    {
-                        double pension = (16 * baseCot) / 100;
-                        double eps = (12.5 * baseCot) / 100;
-                        double arl = (4.350 * baseCot) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else if (riesgo == 5)
-                    {
-                        double pension = (16 * baseCot) / 100;
-                        double eps = (12.5 * baseCot) / 100;
-                        double arl = (6.960 * baseCot) / 100;
-                        double sReal = salario - pension - eps - arl;
-                        double sAnualR = (sReal * 12);
-
-                        Console.WriteLine("Su salario real mensual es de: " + sReal + " Su salario anual real es de: " + sAnualR);
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("No eligio ningun tipo de riesgo laboral.");
-                    }
+                    Console.WriteLine("No eligio ningun tipo de riesgo.");
                 }
             }
-
             else
             {
                 Console.WriteLine("No eligio ningun tipo de contrato.");
             }
+
+            double salarioReal = salario - (eps + pension + (arl * baseCot));
+            double salarioAnual = (salarioReal * 12) + prima;
+
+            Console.WriteLine("Su salario real es de: " + salarioReal);
+            Console.WriteLine("Su salario anual es de: " + salarioAnual);
         }
     }
 }
