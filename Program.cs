@@ -22,7 +22,6 @@ namespace ConsoleApp11
                 turnos++;
                 Console.WriteLine("Turno " + turnos);
                 dado1 = rnd.Next(1, 7);
-                dado1 = rnd.Next(1, 7);
                 dado2 = rnd.Next(1, 7);
                 Console.WriteLine("Dado 1 = " + dado1 + " Dado 2 = " + dado2);
 
