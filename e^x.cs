@@ -13,14 +13,16 @@ namespace ConsoleApp14
             Console.WriteLine("Ingrese el valor de x: ");
             double x = double.Parse(Console.ReadLine());
             double sumatoria = 0, e = 0;
-            int n = 100;
+            int n = 1000;
 
             for (int i = 0; i < n; i++)
             {
+                double anterior = e;
                 sumatoria += (Math.Pow(x, i)) / Factorial(i);
                 e = sumatoria;
                 Console.WriteLine("\nIteración: " + (i+1));
                 Console.WriteLine("e^x: " + e);
+                if (e == anterior) break;
             }
         }
 
